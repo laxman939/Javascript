@@ -24,3 +24,32 @@ function show(...args1) {
 }
 console.log(show(1, 2, 3, 4)); //[ 1, 2, 3, 4 ]-->array
 console.log(show("laxman", "nag", "aradhya"));
+
+/*-->"arguments" is an Array-like object accessible inside functions that contains the values of the arguments 
+passed to that function.
+--it is an object used in earlier and similar to rest 
+--prefer rest     */
+//finding longest string using arguments
+function longestString() {
+  var longest = "";
+  for (var i = 0; i < arguments.length; i++) {
+    if (arguments[i].length > longest.length) {
+      longest = arguments[i];
+    }
+  }
+  return longest;
+}
+//can take any number of arguments
+console.log(longestString("ran", "can", "arguments", "spread")); //arguments
+
+/*Arrow functions do not have "arguments"
+If we access the arguments object from an arrow function, it takes them from the outer “normal” function.   */
+function f() {
+  let show = () => {
+    for (let i in arguments) {
+      console.log(arguments[i]);
+    }
+  };
+  show();
+}
+f(1, 2, 3, 4);
