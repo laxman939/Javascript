@@ -23,4 +23,4 @@ function fibonacci2(n) {
   }
   return array[n - 2] + array[n - 1];
 }
-console.log(fibonacci2(6));
+console.log(fibonacci2(6)); //8
