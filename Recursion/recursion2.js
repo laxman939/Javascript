@@ -9,7 +9,7 @@ function sum1(n) {
 }
 console.log(sum1(5)); //15 = 1+2+3+4+5
 
-//2-using recursion-->not prefer; invloves nested calls
+//2-using recursion-->not prefer; invloves nested calls and slower
 function sum2(n) {
   if (n === 1) {
     return 1;
