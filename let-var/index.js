@@ -46,9 +46,16 @@ for (var k = 0; a < 3; a++) {
 }
 console.log(k); // 0 -->for loop doesn't change outer variable
 
-//3-Hoisting
+//3-Hoisting-->declarations(var x) can be hoisted but not initializations(var x = 5)
+l = 5;
+console.log(l);
+var l; // 5-->declaration-->Hoisted
+
+console.log(a);
+var a = 5; // initialization--> not Hoisted
+
 console.log(x);
-var x = 5; //undefined(not an error)
+var x; //undefined(not an error)
 
 console.log(y); //Cannot access 'y' before initialization
 let y = 4;
