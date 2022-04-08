@@ -14,7 +14,7 @@ function abc() {
 // Question 2 --> Implicit and Explicit Binding
 var obj = {
   name: "laxman",
-  //  arrow func and normal(anonymous) function -> this not works in arrow function
+  //  arrow func and normal(anonymous) functions in object methods -> this not works in arrow function
   display: () => {
     //   display: function () {
     console.log(this.name);
@@ -39,3 +39,36 @@ console.log("b");
 
 // Output
 // a , b , pro , set
+// Resource --> jsv9000
+
+// Question 5 --> Infinite currying
+function add(a) {
+  return function (b) {
+    if (b) return add(a + b);
+    return a;
+  };
+}
+console.log(add(3)(4)(8)(3)());
+
+// Object with methods
+// question 6 --> const result = calc.add(10).multiply(5).substract(30).add(10);
+// console.log(result.total)
+
+const calc = {
+  total: 0,
+  add: function (a) {
+    this.total += a;
+    return this;
+  },
+  multiply: function (a) {
+    this.total *= a;
+    return this;
+  },
+  substract(a) {
+    this.total -= a;
+    return this;
+  },
+};
+
+const result = calc.add(10).multiply(5).substract(30).add(10);
+console.log("result " + result.total);
