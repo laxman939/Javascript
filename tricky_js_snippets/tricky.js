@@ -169,3 +169,100 @@ console.log(typeof null);
 console.log(typeof undefined);
 console.log(null === undefined);
 console.log(null == undefined);
+
+// 18. Write a func that takes an array of numbers and returns the sum of all positive numbers in the array.
+const sumOfPositiveNumbers = (arr) => {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > 0) {
+      // --> for positive numbers
+      // if (arr[i] < 0) { ---> for negative numbers
+      sum += arr[i];
+    }
+  }
+  return sum;
+};
+let arr18 = [1, -2, 7, -4, 5, -1, 6, 2];
+console.log(sumOfPositiveNumbers(arr18), "sumOfPositiveNumbers");
+
+// 19.  Write a function that takes a string as input and returns a new string with all the vowels removed.
+const removeVowels = (str) => {
+  let vowels = ["a", "e", "i", "o", "u"];
+  let resultStr = "";
+
+  for (let i = 0; i < str.length; i++) {
+    resultStr += !vowels.includes(str[i].toLowerCase()) ? str[i] : "";
+  }
+  console.log(resultStr, "resultStr");
+  return resultStr;
+};
+
+removeVowels("string OUtpUt");
+
+// 20. Write a func that takes an array of strings as input and returns a new array with the strings sorted in alphabetical order.
+
+// 21. Write a function that checks if a string is a palindrome.
+const isPalindrome = (str) => {
+  const reverseStr = str.split("").reverse().join("");
+  return str.toLowerCase() === reverseStr.toLowerCase();
+};
+console.log(isPalindrome("malaYaLam"), "palindrome");
+console.log(isPalindrome("hello"), "palindrome");
+
+// 22. Write a function that finds the second highest number in an array of numbers.
+function findSecondHighest(arr) {
+  if (arr.length < 2) {
+    return null; // Return null if the array has fewer than two elements
+  }
+
+  let firstHighest = -Infinity;
+  let secondHighest = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > firstHighest) {
+      console.log("1 if");
+
+      secondHighest = firstHighest;
+      firstHighest = arr[i];
+    } else if (arr[i] > secondHighest && arr[i] < firstHighest) {
+      console.log("2 if else");
+      secondHighest = arr[i];
+    }
+  }
+
+  if (secondHighest === -Infinity) {
+    return null; // Return null if there is no second highest number
+  }
+
+  return secondHighest;
+}
+
+let arr22 = [1, 3, 8, 4, 5, 3, 7, 9];
+console.log(findSecondHighest(arr22), "findSecondHighest");
+// Or using sort() method
+
+// 23. Write a function that removes duplicates from an array.
+const removeDuplicates = (arr) => {
+  // Without Set method
+  let resultArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    !resultArr.includes(arr[i]) && resultArr.push(arr[i]);
+  }
+
+  // With Set method
+  // return [...new Set(arr)];
+
+  return resultArr;
+};
+
+console.log(removeDuplicates(arr22), "removeDuplicates");
+
+// 24. Write a function that returns the sum of two numbers without using the + operator.
+const sumWithoutPlus = (a, b) => {
+  let sum = a;
+  for (let i = 1; i <= b; i++) {
+    sum++;
+  }
+  return sum;
+};
+console.log(sumWithoutPlus(2, 6), "sumWithoutPlus");
