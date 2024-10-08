@@ -266,3 +266,81 @@ const sumWithoutPlus = (a, b) => {
   return sum;
 };
 console.log(sumWithoutPlus(2, 6), "sumWithoutPlus");
+
+// Guessing the code
+// 26.
+const arr26_1 = [1, 2, 3];
+const arr26_2 = [...arr26_1];
+
+arr26_2.push(4);
+
+console.log(arr26_1, "arr26_1");
+console.log(arr26_2, "arr26_2");
+
+// 27
+const a27 = [1, 2, 3];
+const b27 = a27;
+
+b27.push(4);
+
+console.log(a27);
+console.log(b27);
+
+// 28
+console.log(typeof 42);
+console.log(typeof "Hello");
+console.log(typeof true);
+console.log(typeof [1, 2, 3]);
+console.log(typeof { name: "John", age: 25 });
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(typeof function () {});
+
+// 29  Write a function to determine the type of a value.
+console.log(getType(42));
+console.log(getType("Hello"));
+console.log(getType(true));
+console.log(getType([1, 2, 3]));
+console.log(getType({ name: "John", age: 25 }));
+console.log(getType(null));
+console.log(getType(undefined));
+console.log(getType(function () {}));
+
+//The function should print "array" for "[]" and "null" for "null" types.
+const getType = (val) => (val === null ? null : val?.constructor.name); //constructor.name property to determine the type of the value
+
+// 30. what is the output
+function calculateSum() {
+  console.log(result);
+  var num1 = 5;
+  let num2 = 10;
+  const num3 = 15;
+  var result = num1 + num2 + num3;
+}
+
+calculateSum();
+
+// 31. Object.freeze() method is used to make the person object immutable. This means that the properties of the object cannot be modified.
+const person = {
+  name: "John",
+  age: 30,
+};
+
+Object.freeze(person);
+person.age = 40;
+
+console.log(person.age);
+
+// 32.
+function foo() {
+  let x = 1;
+
+  function bar() {
+    let y = 2;
+    console.log(x + y);
+  }
+
+  bar();
+}
+
+foo();
