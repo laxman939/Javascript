@@ -129,9 +129,10 @@ function test() {
 console.log(test());
 console.log(num);
 
-// 13. -- The spread operator ... creates a new object with properties copied from the original object.
+// 13. -- The spread operator(...) creates a new object with properties copied from the original object.
 let obj13 = { name: "John", age: 25 };
 // let newObj13 = { ...obj13, age: 30 }; or  let newObj13 = { ...obj13 }; newObj13.age = 30
+// let obj2 = JSON.parse(JSON.stringify(obj13));
 // above code doesn't change the original obj, but below code changes the original object if we change the new object.
 let newObj13 = obj13;
 newObj13.age = 30;
