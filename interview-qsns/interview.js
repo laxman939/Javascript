@@ -62,4 +62,59 @@ console.log(applyOperation(a, b, add));
 // array.reduce(function(accumulator, currentValue, currentIndex, array), initialValue)
 
 // 11. Explain the concept of currying in JavaScript.
-//   Currying is a technique of transaforming a function of multiple arguments into a sequence of functions with a single argument.
+// Currying is a technique of transforming a func that takes multiple arguments into a sequence of func's, each taking a single argument.
+//  Instead of calling the function with all arguments at once, a curried function allows you to pass them one at a time, returning a new function at each step until all arguments have been provided
+// Normal function
+function add(a, b, c) {
+  return a + b + c;
+}
+console.log(add(1, 2, 3)); // 6
+
+// Curried function
+function add(a) {
+  return function (b) {
+    return function (c) {
+      return a + b + c;
+    };
+  };
+}
+
+console.log(add(1)(2)(3));
+
+//   Withnarroe function
+const addArrow = (a) => (b) => (c) => a + b + c;
+
+console.log(addArrow(1)(2)(3)); // 6
+
+// Why use currying?
+// Reusability: You can create specialized functions from more general ones.
+// Function composition: It allows partial application of arguments, enabling functions to be reused in different contexts.
+// Modularity: Currying helps break down functions into smaller, manageable chunks that handle one concern at a time.
+
+// 12. Syntax error, Reference error, and Type error
+// Reference error occurs when trying to access a varaible or function that does not exist
+
+// Causes
+// - Using a variable before declaring it
+// - Mispelling a variable name
+// - Accessing variables outside of their scope
+
+// Syntax errors occurs when the JS engine encounters code that does not follow the correct syntax rule of the language
+
+// Type error occurs when try to do something with a value that is not allowed for it's type
+
+// 13. Can you explain event delegation and how it improves performance in web applications?
+//  Event delegation is a technique where we attach a single event listener to a parent element instead of adding listeners
+//  to each child. It improves performance by reducing the no of event listeners
+
+// 14. What are arrow functions, and how do they differ from regular functions in JavaScript?
+// Do not have their own this context
+// Simple syntax
+// Can not be used as constructors
+
+// React Questions
+// 1. How would you optimize the performance of a React.js application?
+// - Implement lazy loading for components using React.lazy and Suspense
+// - Utilize useCallback and useMemo hooks to prevent unnecessary re-renders.
+// - Avoid inline functions inside jsx
+// - Optimize component rendering by splitting code using code splitting.
