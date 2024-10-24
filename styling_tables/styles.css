@@ -1,0 +1,115 @@
+body {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+table {
+  border-collapse: separate;
+  text-indent: initial;
+  border-spacing: 2px;
+}
+/* super-simple rule */
+:is(td, th) {
+  border-style: solid;
+}
+
+table {
+  /* border-collapse: collapse; */
+  /* To avoid separate borders */
+  font-family: system-ui;
+  & caption {
+    margin-block: 1rlh;
+  }
+  &:is(td, th) {
+    border-style: solid;
+    padding: 0.5ch 1ch;
+  }
+}
+/* Zebra Stripes for Columns */
+/* col:nth-of-type(even) {
+  background: #e9e1e1;
+} */
+/* Zebra Stripes for Rows */
+/* tr:nth-of-type(odd) {
+  background: #cac8c8;
+} */
+/* Rounded corners */
+/* Rounded corners are a bit tricky. You can't just add border-radius to a <table>, so we have to target the first and last cell of the first and last rows: */
+
+th {
+  &:first-of-type {
+    border-start-start-radius: 0.5em;
+  }
+  &:last-of-type {
+    border-start-end-radius: 0.5em;
+  }
+}
+tr {
+  &:last-of-type {
+    & td {
+      &:first-of-type {
+        border-end-start-radius: 0.5em;
+      }
+      &:last-of-type {
+        border-end-end-radius: 0.5em;
+      }
+    }
+  }
+}
+table {
+  border-spacing: 0;
+}
+:is(td, th) {
+  border-block-width: 1px 0;
+  border-inline-width: 1px 0;
+  &:last-of-type {
+    border-inline-end-width: 1px;
+  }
+}
+/* Split Columns */
+/* Let's keep the separate columns, and use the border-spacing-property to add a gap between columns: */
+table {
+  border-spacing: 2ch 0;
+  & :is(td, th) {
+    border-inline-width: 1px;
+  }
+}
+/* Split Rows */
+table {
+  border-spacing: 0 2ch;
+  & :is(td, th) {
+    border-block-width: 1px;
+  }
+}
+/* Hover and Focus */
+td:hover {
+  background: #666666;
+}
+
+tr:hover {
+  background: #e6e6e6;
+}
+/* Hover for col */
+/* table {
+  &:has:is(td, th):nth-child(1):hover col:nth-child(1) {
+    background: #e6e6e6;
+  }
+} */
+
+/* Outlines */
+/* To show outlines on hover is also straightforward, and the same for cells and rows. You need to deduct the width from the offset: */
+:is(td, th, tr):hover {
+  outline: 2px solid #666;
+  outline-offset: -2px;
+}
+
+/* Aligning text */
+/* Example: You want to center the text in the second column and right-align the text in the fourth column: */
+/* HTML -->  <table data-c2="center" data-c4="end"> */
+/* CSS */
+[data-c2~="center"] tr > *:nth-of-type(2) {
+  text-align: center;
+}
+[data-c4~="end"] tr > *:nth-of-type(4) {
+  text-align: end;
+}
